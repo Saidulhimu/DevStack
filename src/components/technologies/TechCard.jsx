@@ -1,10 +1,7 @@
-import React from 'react';
-
 const TechCard = ({ tech, onAddToStack, isAdded }) => {
   return (
-    <div className="bg-white rounded-2xl p-6 border border-gray-100 shadow-sm hover:shadow-md transition-all flex flex-col justify-between">
+    <div className="bg-white rounded-2xl p-6 border border-gray-100 shadow-xs hover:shadow-md transition-all flex flex-col justify-between">
       <div>
-        {/* Top: Icon & Badge */}
         <div className="flex justify-between items-start mb-4">
           <div className="w-10 h-10 flex items-center justify-center">
             <img src={tech.icon} alt={tech.name} className="w-full h-full object-contain" />
@@ -14,7 +11,6 @@ const TechCard = ({ tech, onAddToStack, isAdded }) => {
           </span>
         </div>
 
-        {/* Title & Description */}
         <h3 className="text-xl font-bold text-gray-900 mb-2">{tech.name}</h3>
         <p className="text-gray-500 text-xs leading-relaxed mb-6 line-clamp-3">
           {tech.description}
@@ -22,7 +18,6 @@ const TechCard = ({ tech, onAddToStack, isAdded }) => {
       </div>
 
       <div>
-        {/* Category, Difficulty & Rating */}
         <div className="flex items-center gap-2 mb-5 text-[11px] font-medium text-gray-600">
           <span className="bg-gray-100 px-2.5 py-1 rounded-md">{tech.category}</span>
           <span className="bg-gray-100 px-2.5 py-1 rounded-md">{tech.difficulty}</span>
@@ -31,14 +26,13 @@ const TechCard = ({ tech, onAddToStack, isAdded }) => {
           </span>
         </div>
 
-        {/* Action Button */}
         <button
           onClick={() => onAddToStack(tech)}
           disabled={isAdded}
           className={`w-full py-2.5 px-4 rounded-xl font-bold text-xs transition-all ${
             isAdded
               ? 'bg-gray-900 text-gray-300 cursor-not-allowed opacity-90'
-              : 'bg-slate-900 text-white hover:bg-black shadow-sm'
+              : 'bg-slate-900 text-white hover:bg-black shadow-xs'
           }`}
         >
           {isAdded ? '✓ Added to Stack' : 'Add to Stack'}

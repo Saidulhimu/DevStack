@@ -1,17 +1,7 @@
 
-type StackItemProps = {
-  item: {
-    id: string | number;
-    icon: string;
-    name: string;
-    category: string;
-  };
-  onRemove: (id: string | number) => void;
-};
-
-const StackItem = ({ item, onRemove }: StackItemProps) => {
+const StackItem = ({ item, onRemove }) => {
   return (
-    <div className="flex items-center justify-between p-3 rounded-xl border border-gray-100 bg-white shadow-xs">
+    <div className="flex items-center justify-between p-3 rounded-xl border border-gray-100 bg-white shadow-2xs">
       <div className="flex items-center gap-3">
         <img src={item.icon} alt={item.name} className="w-8 h-8 object-contain" />
         <div>
