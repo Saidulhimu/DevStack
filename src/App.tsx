@@ -4,7 +4,7 @@ import Navbar from './components/navber/Navbar';
 
 function App() {
   return (
-    <div>
+    <div className="min-h-screen bg-white">
       <Navbar />
 
       <main>
