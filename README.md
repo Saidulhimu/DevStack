@@ -1,78 +1,60 @@
-# React + TypeScript + Vite
+# 🚀 Dev Stack Builder
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+Dev Stack Builder is an interactive web application designed to help developers explore modern web technologies and assemble their custom development stacks. Users can review essential details, ratings, and categories for various tools, add their preferred tech to a personalized stack sidebar, and manage their selection in real time with dynamic feedback.
 
-Currently, two official plugins are available:
+---
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Oxc](https://oxc.rs)
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/)
+## 🛠 Tech Stack
 
-## React Compiler
+- **Frontend Framework:** React (Vite)
+- **Styling:** Tailwind CSS & DaisyUI
+- **Alerts & Notifications:** React-Toastify
+- **Data Source:** JSON via Fetch API
+- **Language:** JavaScript / TypeScript
 
-The React Compiler is enabled on this template. See [this documentation](https://react.dev/learn/react-compiler) for more information.
+---
 
-Note: This will impact Vite dev & build performances.
-You can also try [the experimental native React Compiler support in plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md#rust-react-compiler) by using `compiler: true` in the plugin options instead of using the Babel plugin.
+## ✨ Key Features
 
-## Expanding the ESLint configuration
+1. **Dynamic Interactive Grid:** Browse through a responsive 3-column catalog of technologies displaying badges, difficulty levels, star ratings, and descriptions.
+2. **Real-time Stack Manager:** Add technologies to a dedicated side panel that tracks selection counts .
+3. **Instant Feedback & UI States:** Includes loading state handling for data fetching and styled Toastify notifications for every user action.
 
-If you are developing a production application, we recommend updating the configuration to enable type-aware lint rules:
+---
 
-```js
-export default defineConfig([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
+## 💡 React Concept Questions & Answers
 
-      // Remove tseslint.configs.recommended and replace with this
-      tseslint.configs.recommendedTypeChecked,
-      // Alternatively, use this for stricter rules
-      tseslint.configs.strictTypeChecked,
-      // Optionally, add this for stylistic rules
-      tseslint.configs.stylisticTypeChecked,
+### 1. What is JSX, and why is it used in React?
+JSX stands for JavaScript XML. It allows us to write HTML-like markup directly inside JavaScript code. It makes building UI components much easier and more intuitive because we can see the markup structure .
 
-      // Other configs...
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
+### 2. What is the difference between props and state?
+- **Props (Properties):** Read-only data passed down from a parent component to a child component.
+- **State:** Internal data managed within a component that can change over time. 
 
-```
+### 3. What does the `useState` hook do, and where did you use it in this project?
+The `useState` hook allows functional components to store and manage local dynamic data. In this project, I used `useState` inside `useTechnologies` to keep track of:
+- `technologies`: The list of tools loaded from JSON.
+- `stack`: The items selected by the user.
+- `loading`: The loading state while data is fetching.
 
-You can also install [eslint-plugin-react-x](https://npmx.dev/package/eslint-plugin-react-x) and [eslint-plugin-react-dom](https://npmx.dev/package/eslint-plugin-react-dom) for React-specific lint rules:
+### 4. What does the `useEffect` hook do, and why did you need it to load the JSON data?
+`useEffect` lets us run side effects in functional components, such as fetching data or setting timers. I needed it to fetch the `technologies.json` file from the `public` folder.
 
-```js
-// eslint.config.js
-import reactX from 'eslint-plugin-react-x'
-import reactDom from 'eslint-plugin-react-dom'
+### 5. Why does every item in a `.map()` list need a unique `key` prop?
+React relies on unique `key` props to keep track of individual list items when changes occur (like adding or deleting items). It helps React identify exactly which element changed, updated, or was removed, allowing efficient DOM updates instead of re-rendering the whole list.
 
-export default defineConfig([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
-      // Enable lint rules for React
-      reactX.configs['recommended-typescript'],
-      // Enable lint rules for React DOM
-      reactDom.configs.recommended,
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
-
-```
+### 6. What is conditional rendering? Show one place you used it.
+Conditional rendering means showing or hiding specific UI elements based on certain conditions or states. 
+**Example from this project:** In `StackSidebar.jsx`, I used it to show the empty stack message when no items are selected:
+```jsx
+{stack.length === 0 ? (
+  <div className="border border-dashed border-gray-200 rounded-2xl py-10 px-4 text-center my-2">
+    <p className="text-gray-400 text-sm font-medium">Your stack is empty.</p>
+  </div>
+) : (
+  <div className="space-y-3 mb-6">
+    {stack.map((item) => (
+      <StackItem item="{item}" key="{item.id}" onRemove="{onRemove}"/>
+    ))}
+  </div>
+)}
