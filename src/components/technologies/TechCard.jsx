@@ -29,11 +29,10 @@ const TechCard = ({ tech, onAddToStack, isAdded }) => {
         <button
           onClick={() => onAddToStack(tech)}
           disabled={isAdded}
-          className={`w-full py-2.5 px-4 rounded-xl font-bold text-xs transition-all ${
-            isAdded
-              ? 'bg-gray-900 text-gray-300 cursor-not-allowed opacity-90'
-              : 'bg-slate-900 text-white hover:bg-black shadow-xs'
-          }`}
+          className={`w-full py-2.5 px-4 rounded-xl font-bold text-xs transition-all ${isAdded
+              ? 'bg-gray-200 text-gray-500 cursor-not-allowed opacity-80'
+              : 'brand-gradient-bg text-white hover:opacity-95 shadow-xs'
+            }`}
         >
           {isAdded ? '✓ Added to Stack' : 'Add to Stack'}
         </button>

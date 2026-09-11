@@ -2,7 +2,7 @@
 @plugin "daisyui";
 
 :root {
-  --brand-gradient: linear-gradient(135deg, #ff6b6b 0%, #a855f7 50%, #6366f1 100%);
+  --brand-gradient: linear-gradient(135deg, #f97316 0%, #ec4899 50%, #8b5cf6 100%);
 }
 
 .brand-gradient-text {
