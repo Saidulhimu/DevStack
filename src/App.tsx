@@ -4,6 +4,7 @@ import 'react-toastify/dist/ReactToastify.css';
 // @ts-expect-error The hook is currently implemented in JavaScript without a declaration file.
 import Navbar from './components/navber/Navbar';
 import Hero from './components/hero/Hero';
+import Footer from './components/footer/Footer';
 import TechnologyGrid from './components/technologies/TechnologyGrid';
 import { useTechnologies } from './hooks/useTechnologies';
 
@@ -19,6 +20,8 @@ function App() {
 
   return (
     <div className="min-h-screen bg-white">
+
+      <div>
       <ToastContainer />
       <Navbar />
       <Hero />
@@ -32,6 +35,10 @@ function App() {
         onRemove={handleRemove}
         onRemoveAll={handleRemoveAll}
       />
+      </div>
+
+      <Footer />
+
     </div>
   );
 }
